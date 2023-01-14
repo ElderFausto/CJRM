@@ -73,7 +73,7 @@ let priceMessage = null
 const isChild = age <=7
 const isOlder = age >= 65
 
-if (isChild <=7 || isOlder >= 65) {
+if (isChild || isOlder) {
   priceMessage = `para voce a entrada é gratis`
 } else {
   priceMessage = `a entrada é 30R$`
