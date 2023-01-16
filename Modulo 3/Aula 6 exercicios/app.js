@@ -39,14 +39,16 @@
   "Esta é a Xª vez que essa string é exibida."
 */
 
-let log = function(value = 0) {
+function log(value = 0) {
   console.log(value);
 }
 
 // for (let i = 0; i < 7; i++) {
 //   const counter = i + 1
 //   log(`Esta é a ${counter}ª vez que essa string é exibida.`)
+  
 // }
+
 
 /*
   04
