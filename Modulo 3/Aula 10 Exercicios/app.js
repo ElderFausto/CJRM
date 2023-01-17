@@ -25,7 +25,7 @@ console.log(typeof convertToString(true));
 */
   const returnCaracter = string => `A palavra possui ${string.length} caracteres`
   
-  console.log(returnCaracter('bocadebueiro'));
+  console.log(returnCaracter('vitoria'));
 /*
   03
 
@@ -55,7 +55,7 @@ console.log(getIndex('o', 'krankenhouse'));
 */
 const transformBoolean = (value, array) => array.includes(value)
 
-console.log(transformBoolean('y', 'werwrwe'));
+console.log(transformBoolean('y', ['a', 'e', 't', 'y']));
 /*
   06
 
@@ -83,7 +83,7 @@ console.log(removeArrayItem([1, 2, 3, 4]));
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
-const isNull = value =>  value === null
+const isNull = value => value === null
 
 console.log(isNull(null));
 /*
@@ -113,14 +113,16 @@ invokeCallback(invokeMyName)
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
-
-const callCallback = (value, callback) => {
+const funcCallback = (value, callback) => {
   return callback(value)
 }
 
-const triple = number => number * 3
+const triple = value => value * 3
 
-console.log(callCallback(33, triple));
+console.log(funcCallback(33, triple));
+
+
+
 
 /*
   11
@@ -132,18 +134,15 @@ console.log(callCallback(33, triple));
 */
 
 const numbers = [1, 2, 3]
-let counter = []
 
 const showNumbersInfo = (item, index, array) => {
   const itemPosition = index + 1
   const items = array.join(', ')
 
-  counter.push(`O ${itemPosition}º item do array [${items}] é ${item}.`)
+  console.log(`O ${itemPosition}º item do array [${items}] é ${item}.`)
 }
 
 numbers.forEach(showNumbersInfo)
-
-console.log(counter);
 /*
   12
 
@@ -152,7 +151,7 @@ console.log(counter);
     criada.
 */
 
-const letters = ['v', 'e', 'p']
+const letters = ['v', 'c', 'r']
 let lettersCopy = []
 
 // for (let i = 0; i < letters.length; i++) {
