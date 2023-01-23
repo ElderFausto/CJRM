@@ -4,7 +4,7 @@
 //   console.log('clicou no botao');
 // })
 
-/* const lis = document.querySelectorAll('li')
+const lis = document.querySelectorAll('li')
 
 lis.forEach(li => {
   li.addEventListener('click', event => {
@@ -13,7 +13,7 @@ lis.forEach(li => {
     event.stopPropagation()
     clickedElement.remove()
   })
-}) */
+})
 
 const ul = document.querySelector('ul')
 const button = document.querySelector('button')
