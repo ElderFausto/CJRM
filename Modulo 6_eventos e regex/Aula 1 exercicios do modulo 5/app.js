@@ -19,7 +19,7 @@ const showClickedElement = ({target}) => {
     h2.textContent = `Clicou na div.`;
     return
   }
-  h2.textContent = `clicou no ${event.target.tagName.toLowerCase()}, filho da div.`;
+  h2.textContent = `clicou no ${target.tagName.toLowerCase()}, filho da div.`;
 }
 
 
