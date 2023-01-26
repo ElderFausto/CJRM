@@ -21,86 +21,87 @@
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
 const inputUsername = document.querySelector("#username");
-const form = document.querySelector('form')
-const button = document.querySelector('button')
+const form = document.querySelector("form");
+const button = document.querySelector("button");
 
 const paragraphUsernameFeedback = document.createElement("p");
-const paragraphSubmitFeedback = document.createElement("p")
+const paragraphSubmitFeedback = document.createElement("p");
 
-paragraphSubmitFeedback.setAttribute('data-feedback', 'submit-feedback')
+paragraphSubmitFeedback.setAttribute("data-feedback", "submit-feedback");
 
 const invalidSubmitInfo = {
-  paragraph: paragraphSubmitFeedback, 
-  text: 'Por favor, insira um username válido', 
-  className: 'submit-help-feedback', 
-  previousSibling: button
-}
+  paragraph: paragraphSubmitFeedback,
+  text: "Por favor, insira um username válido",
+  className: "submit-help-feedback",
+  previousSibling: button,
+};
 
 const validSubmitInfo = {
   paragraph: paragraphSubmitFeedback,
   text: "Dados enviados =)",
-  className: 'submit-success-feedback',
-  previousSibling: button
-}
+  className: "submit-success-feedback",
+  previousSibling: button,
+};
 
 const invalidUsernameInfo = {
-  paragraph: paragraphUsernameFeedback, 
-  text: "O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas", 
-  className: 'username-help-feedback', 
-  previousSibling: inputUsername
-}
+  paragraph: paragraphUsernameFeedback,
+  text: "O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas",
+  className: "username-help-feedback",
+  previousSibling: inputUsername,
+};
 
 const validUsernameInfo = {
-  paragraph: paragraphUsernameFeedback, 
-  text: "Username válido =)", 
-  className: 'username-success-feedback', 
-  previousSibling: inputUsername
-}
+  paragraph: paragraphUsernameFeedback,
+  text: "Username válido =)",
+  className: "username-success-feedback",
+  previousSibling: inputUsername,
+};
 
 const insertParagraphIntoDOM = (paragraphInfo) => {
-  const {paragraph, text, className, previousSibling} = paragraphInfo
-  paragraph.textContent = text
-  paragraph.setAttribute('class', className)
-  previousSibling.insertAdjacentElement('afterend', paragraph)
-}
+  const { paragraph, text, className, previousSibling } = paragraphInfo;
+  paragraph.textContent = text;
+  paragraph.setAttribute("class", className);
+  previousSibling.insertAdjacentElement("afterend", paragraph);
+};
 
 const removeSubmitParagraph = () => {
-  const paragraphSubmitFeedbackExists = document
-    .querySelector('[data-feedback="submit-feedback"]')
-  
-  if(paragraphSubmitFeedbackExists) {
-    paragraphSubmitFeedbackExists.remove()
-  } 
-}
+  const paragraphSubmitFeedbackExists = document.querySelector(
+    '[data-feedback="submit-feedback"]'
+  );
 
-const testUsername = inputValue => /^[a-zA-Z]{6,}$/.test(inputValue)
+  if (paragraphSubmitFeedbackExists) {
+    paragraphSubmitFeedbackExists.remove();
+  }
+};
 
-const showUserNameInfo = event => {
+const testUsername = (inputValue) => /^[a-zA-Z]{6,}$/.test(inputValue);
+
+const showUserNameInfo = (event) => {
   const isUsernameValid = testUsername(event.target.value);
 
-  removeSubmitParagraph()
+  removeSubmitParagraph();
 
-  if(!isUsernameValid) {
-    insertParagraphIntoDOM(invalidUsernameInfo)
-    return
+  if (!isUsernameValid) {
+    insertParagraphIntoDOM(invalidUsernameInfo);
+    return;
   }
-  insertParagraphIntoDOM(validUsernameInfo)
-}
+  insertParagraphIntoDOM(validUsernameInfo);
+};
 
-const showSubmitInfo = event => {
-  event.preventDefault()
+const showSubmitInfo = (event) => {
+  event.preventDefault();
 
-  const isUsernameValid = testUsername(inputUsername.value)
+  const isUsernameValid = testUsername(inputUsername.value);
 
-  if(!isUsernameValid) {
-    insertParagraphIntoDOM(invalidSubmitInfo)
-    return
+  if (!isUsernameValid) {
+    insertParagraphIntoDOM(invalidSubmitInfo);
+    return;
   }
-  insertParagraphIntoDOM(validSubmitInfo)
-}
+  insertParagraphIntoDOM(validSubmitInfo);
+};
 
 inputUsername.addEventListener("input", showUserNameInfo);
-form.addEventListener('submit', showSubmitInfo)
+form.addEventListener("submit", showSubmitInfo);
 
 /*
   02
@@ -137,12 +138,12 @@ form.addEventListener('submit', showSubmitInfo)
 
 const some = (array, func) => {
   for (let i = 0; i < array.length; i++) {
-    if(func(array[i])) {
-      return true
+    if (func(array[i])) {
+      return true;
     }
-    return false
+    return false;
   }
-}
+};
 
-console.log(some([1, 2, 3], item => item > 2));
-console.log(some([1, 3, 5], item => item === 0));
+console.log(some([1, 2, 3], (item) => item > 2));
+console.log(some([1, 3, 5], (item) => item === 0));
