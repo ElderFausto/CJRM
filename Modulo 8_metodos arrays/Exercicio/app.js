@@ -8,7 +8,7 @@
 const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
 const getOddNumbers = number => number % 2 === 1
 
-const oddNumbers = randomNumbers.filter(getOddNumbers)
+const oddNumbers = randomNumbers.filter(getOddNumbers )
 console.log(oddNumbers);
 /*
   02

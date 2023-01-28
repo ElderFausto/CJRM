@@ -1,6 +1,7 @@
 const form = document.querySelector(".quiz-form");
 const finalScoreContainer = document.querySelector(".final-score-container");
 const correctAnswers = ["D", "B", "C", "A"];
+
 let score = 0;
 
 const getUserAnswers = () => correctAnswers.map((_, index) => 
@@ -37,11 +38,13 @@ const animateFinalScore = () => {
   }, 10);
 };
 
+const resetUserScore = _ => score = 0
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const userAnswers = getUserAnswers();
-
+  resetUserScore()
   calculateUserScore(userAnswers);
   showFinalScore();
   animateFinalScore();
