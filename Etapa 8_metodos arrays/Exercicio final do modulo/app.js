@@ -5,10 +5,9 @@
   - Não modifique o array original;
   - Exiba o array ordenado no console.
 */
+const names = ['Caio', 'André', 'Dário']
 
 const getArrayCopy = array => array.map(item => item)
-
-const names = ['Caio', 'André', 'Dário']
 
 const namesInAlphabeticalOrder = getArrayCopy(names).sort()
 
