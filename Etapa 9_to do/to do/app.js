@@ -2,6 +2,7 @@ const formAddTodo = document.querySelector(".form-add-todo");
 const inputSearchTodo = document.querySelector(".form-search input");
 const todosContainer = document.querySelector(".todos-container");
 
+// adiciona
 const addTodo = (inputValue) => {
   if (inputValue.length) {
     todosContainer.innerHTML += `
@@ -9,7 +10,7 @@ const addTodo = (inputValue) => {
         <span>${inputValue}</span>
         <i class="far fa-trash-alt" data-trash="${inputValue}"></i>
       </li>
-`;
+`
     event.target.reset();
   }
 };
@@ -21,6 +22,7 @@ formAddTodo.addEventListener("submit", (event) => {
   addTodo(inputValue);
 });
 
+// remove
 const removeTodo = (clickedElement) => {
   const trashDataValue = clickedElement.dataset.trash;
   const todo = document.querySelector(`[data-todo="${trashDataValue}"]`);
@@ -35,12 +37,14 @@ todosContainer.addEventListener("click", (event) => {
   removeTodo(clickedElement);
 });
 
+// filtra
 const filterTodos = (todos, inputValue, returnMatchedTodos) => todos
     .filter((todo) => {
       const matchedTodos = todo.textContent.toLowerCase().includes(inputValue)
       return returnMatchedTodos ? matchedTodos : !matchedTodos
     })
 
+// classes
 const manipulateClasses = (todos, classToAdd, classToRemove) => {
   todos.forEach((todo) => {
     todo.classList.remove(classToRemove);

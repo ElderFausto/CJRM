@@ -1,0 +1,17 @@
+body {
+  background-color: blueviolet;
+}
+
+.clock-container {
+  font-size: 4em;
+  text-align: center;
+  margin: 200px auto 0;
+  color: rgb(36, 37, 37);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.clock-container span {
+  padding: 20px;
+  background-color: aquamarine;
+  border-radius: 10px;
+}
