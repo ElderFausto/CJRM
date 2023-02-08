@@ -21,25 +21,54 @@
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
 
-const form = document.querySelector('form')
+const form = document.querySelector("form");
+const GIFSContainer = document.querySelector("div");
 
-form.addEventListener('submit', async event => {
-  event.preventDefault()
+const APIKey = "z9dY6vA1V0yiV5TFCNz16oGTcHIveW3n";
 
-  const inputValue = event.target.search.value
-  const APIKey = 'z9dY6vA1V0yiV5TFCNz16oGTcHIveW3n'
-  const url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&limit=1&q=${inputValue}`
-  
+const getGIPHYApiUrl = (GIFName) =>
+  `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&limit=1&q=${GIFName}`;
+
+const generateGIFImg = (downsizedGIFUrl, GIFData) => {
+  const img = document.createElement("img");
+
+  img.setAttribute("src", downsizedGIFUrl);
+  img.setAttribute("alt", GIFData.data[0].title);
+
+  return img;
+};
+
+const fetchGIF = async (inputValue) => {
   try {
-    const response = await fetch(url)
+    const GIPHYApiUrl = getGIPHYApiUrl(inputValue);
+    const response = await fetch(GIPHYApiUrl);
 
-    if(!response.ok) {
-      throw new Error('Nao foi possivel obter os dados')
+    if (!response.ok) {
+      throw new Error("Nao foi possivel obter os dados");
     }
-    const GIFData = await response.json()
-    console.log(GIFData)
+    return response.json();
   } catch (error) {
-    alert(`Erro: ${error.message}`)
+    alert(`Erro: ${error.message}`);
   }
-})
+};
 
+const insertGifIntoDOM = async (inputValue) => {
+  const GIFData = await fetchGIF(inputValue);
+
+  if (GIFData) {
+    const downsizedGIFUrl = GIFData.data[0].images.downsized.url;
+    const img = generateGIFImg(downsizedGIFUrl, GIFData);
+
+    GIFSContainer.insertAdjacentElement("afterbegin", img);
+
+    form.reset();
+  }
+};
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const inputValue = event.target.search.value;
+
+  insertGifIntoDOM(inputValue);
+});
