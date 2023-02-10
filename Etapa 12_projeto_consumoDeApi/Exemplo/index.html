@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <title>Document</title>
-</head>
-<body>
-  <div id="container" class="container row"></div>
-  <script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>E-commerce</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar min-vw-100">
+        <div class="navbar-brand">
+          <h1 class="navbar-item has-text-white">Ecommerce</h1>
+        </div>
+        <div class="navbar-end">
+          <a class="navbar-item has-text-white" id="modal-button">
+            <span class="icon">
+              <i class="fas fa-shopping-cart"></i>
+            </span>
+            <span id="carritoContenedor">0</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section mt-5 is-two-fifths" id="container"></section>
+    </main>
+
+    <div class="modal" id="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Carrito</p>
+          <button class="delete" id="close-modal"></button>
+        </header>
+        <section class="modal-card-body"></section>
+        <footer class="modal-card-foot">
+          <button class="button is-danger" id="vaciarCarrito">
+            Vaciar carrito
+          </button>
+          <button class="button is-primary" id="procesarCompra">
+            Continuar compra
+          </button>
+        </footer>
+        <p class="has-text-centered" id="precioTotal">Precio total:</p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>

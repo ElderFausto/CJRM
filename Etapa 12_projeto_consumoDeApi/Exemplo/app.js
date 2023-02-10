@@ -1,6 +1,9 @@
-const container = document.querySelector("#container");
+const contenedor = document.querySelector("#container");
 
 const fakeStoreApi = "https://fakestoreapi.com/products";
+
+let shoppingCart = [];
+let productList = [];
 
 const fetchProducts = async () => {
   try {
@@ -15,37 +18,49 @@ const fetchProducts = async () => {
   }
 };
 
-const getProducts = async () => {
-  const products = await fetchProducts();
-
-  products.forEach((product) => {
-    const { id, title, image, price, description } = product;
-    container.innerHTML += `
-    <div class="card columns is-desktop">
+const addProductsContainer = (product) => {
+  const { id, title, image, price, description, category } = product;
+  contenedor.innerHTML += `
+    <div class="card mt-3" style="width: 18rem;">
     <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="${image}" alt="Card image cap">
+      </figure>
     </div>
     <div class="card-content">
       <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48 ">
-            <img src="${image}" class="columns is-desktop" alt="Placeholder image">
-          </figure>
-        </div>
         <div class="media-content">
-          <p class="title is-4">${title}</p>
-          <p class="subtitle is-6">${price}</p>
+          <p class="title is-4">${name}</p>
+          <p class="subtitle is-6">${title}</p>
         </div>
       </div>
   
       <div class="content">
-        ${id}
-        ${description}
+        <p>Precio: ${price}</p>
+        <p>Descripcion: ${description}</p>
+        <p>Category: ${category}</p>
         <br>
+        <button class="button is-primary" onclick="addProduct(${id})">Comprar Produto</button>
       </div>
     </div>
   </div>
     `;
-  });
+  }
+
+
+const getProducts = async () => {
+  const products = await fetchProducts();
+  products.forEach(addProductsContainer);
+
+  productList = products
+  console.log(productList)
 };
 
+const addProduct = (id) => {
+  shoppingCart.push(productList.find((item) => item.id === id))
+  console.log(shoppingCart)
+}
+
 getProducts();
+
+
