@@ -25,6 +25,16 @@ const showCityWeatherInfo = async (cityName) => {
   cityNameContainer.textContent = LocalizedName;
   cityWeatherContainer.textContent = WeatherText;
   cityTemperatureContainer.textContent = Temperature.Metric.Value;
+
+  showCityCard()
+};
+
+const showLocalStorageCIty = () => {
+  const city = localStorage.getItem("city");
+
+  if (city) {
+    showCityWeatherInfo(city);
+  }
 };
 
 cityForm.addEventListener("submit", (event) => {
@@ -32,7 +42,9 @@ cityForm.addEventListener("submit", (event) => {
 
   const inputValue = event.target.city.value;
 
-  showCityCard();
   showCityWeatherInfo(inputValue);
+  localStorage.setItem("city", inputValue);
   cityForm.reset();
 });
+
+showLocalStorageCIty();
